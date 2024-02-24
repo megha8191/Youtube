@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap')l;
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html{
+  font-size: 16px;
+}
+
+body{
+  font-family: "Roboto", sans-serif;
+}
+
+.sidebar-list li{
+  margin-bottom: 0.25rem;
+  display: inline-flex;
+  width: 100%;
+  cursor: pointer;
+  gap: 1.25rem;
+  border-radius: 0.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.sidebar-list li:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+  font-weight: 500;
+}
+
+.upper-tags li{
+  margin-right: 0.75rem;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+}
+
+.upper-tags li::first-letter{
+  text-transform: uppercase;
+}
+.main-video-grid{
+  grid-template-columns: repeat( auto-fit,minmax(320px,1fr))
+
+}
