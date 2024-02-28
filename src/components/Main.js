@@ -15,23 +15,24 @@ const Main = () => {
     setvideoList(vdata_items)
   }
 
-  const tags = ["Exams","Skincare","Haul","Recruitment","sales head"]
+  const tags = ["Exams", "Skincare", "Haul", "Recruitment", "sales head"]
 
   if (!videoList) return "Loading";
   else return (
-    <div className='md:basis-10/12 px-2'>
-        <ul className='upper-tags w-full mb-8'>
-          {tags.map(function(tag){
-            <li key={tag}>{tag}</li>
-          })}
+    <>
+      <ul className='upper-tags w-full mb-8'>
+       
+       {tags.map(function (tag) {
+          return <li key={tag}>{tag}</li>
+        })}
 
-        </ul>
-        <div className='grid main-video-grid gap-x-4 gap-y-8 w-full'>
-          {videoList.map(function (video) {
-            return <VideoCard item={video} />
-          })}
-        </div>
-    </div>
+      </ul>
+      <div className='grid main-video-grid gap-x-4 gap-y-8 w-full'>
+        {videoList.map(function (video) {
+          return <VideoCard item={video} key={video.id} />
+        })}
+      </div>
+    </>
   )
 }
 

@@ -13,16 +13,7 @@ body{
 }
 
 .sidebar-list li{
-  margin-bottom: 0.25rem;
-  display: inline-flex;
-  width: 100%;
-  cursor: pointer;
-  gap: 1.25rem;
-  border-radius: 0.5rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
+  @apply flex gap-3 cursor-pointer py-2 px-3 mb-1 rounded-lg
 }
 
 .sidebar-list li:hover{
@@ -53,4 +44,9 @@ body{
 .main-video-grid{
   grid-template-columns: repeat( auto-fit,minmax(320px,1fr))
 
+}
+.nav-list-name{
+  min-width:140px;
+  width: 140px;
+  word-break: break-all;
 }

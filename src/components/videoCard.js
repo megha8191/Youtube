@@ -13,13 +13,13 @@ function formatViewCount(viewCount) {
 }
 
 const VideoCard = (video) => {
-    console.log(video)
+    // console.log(video)
     const { statistics, snippet, id, contentDetails } = video.item;
     const { thumbnails, title, channelTitle } = snippet
     return (
-        <Link to={"/watch?v="+ id} key={id} className='w-100 cursor-pointer'>
+        <Link to={"/watch?v="+ id} key={"ji"+ id} className='w-100 cursor-pointer'>
             <div className='relative rounded-lg overflow-hidden'>
-                <img src={thumbnails.maxres.url} alt='thumbnail' />
+                <img src={thumbnails?.maxres?.url || thumbnails?.high?.url} alt='thumbnail' />
                 <p className='text-xs bg-black text-white absolute bottom-1 py-1 px-2 rounded right-1 '>{convertDurationToTime(contentDetails.duration)}</p>
             </div>
             <div className='w-100 flex pt-3 gap-3'>

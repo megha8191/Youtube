@@ -6,8 +6,10 @@ import { Outlet } from 'react-router-dom'
 const Body = () => {
   return (
     <div className='flex flex-wrap pt-3 ' >
-        <Sidebar />
-        <Outlet/>
+      <Sidebar />
+      <div className='basis-auto  grow'>
+        <Outlet />
+      </div>
     </div>
   )
 }
