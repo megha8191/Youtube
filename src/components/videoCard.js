@@ -19,7 +19,7 @@ const VideoCard = (video) => {
     return (
         <Link to={"/watch?v="+ id} key={"ji"+ id} className='w-100 cursor-pointer'>
             <div className='relative rounded-lg overflow-hidden'>
-                <img src={thumbnails?.maxres?.url || thumbnails?.high?.url} alt='thumbnail' />
+                <img className="w-full" src={thumbnails?.medium?.url || thumbnails?.maxres?.url} alt='thumbnail' />
                 <p className='text-xs bg-black text-white absolute bottom-1 py-1 px-2 rounded right-1 '>{convertDurationToTime(contentDetails.duration)}</p>
             </div>
             <div className='w-100 flex pt-3 gap-3'>

@@ -10,12 +10,10 @@ import store from './utils/store';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Videodetail from './components/videoDetail';
 
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 const App =()=>{
   return (
-
       <Provider store={store}>
         <Header />
         <Body/>
@@ -23,8 +21,6 @@ const App =()=>{
   )
 }
 const approuter = createBrowserRouter([
- 
-
   {
     path: "/",
     element: <App/>,
@@ -45,7 +41,6 @@ const approuter = createBrowserRouter([
   }
 ]);
 
-
-root.render(    <React.StrictMode>
-  <RouterProvider router={approuter}></RouterProvider></React.StrictMode>);
+root.render(    
+<React.StrictMode><RouterProvider router={approuter}></RouterProvider></React.StrictMode>);
 reportWebVitals();

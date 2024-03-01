@@ -1,27 +1,33 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import { hideSidebar } from '../utils/appSlice';
 import Comments from './comments';
 import LiveChat from './liveChat';
+import { google_api_key } from '../utils/constant';
 
 
 const Videodetail = () => {
-
-    const hii = () => dispatch(hideSidebar());
+    const hideSidebarfn = () => dispatch(hideSidebar());
     const dispatch = useDispatch();
-    const sidebar= document.getElementById('sidebar')
-
-    useEffect(() => {
-        hii();
-    }, [])
-
+    // videoId
     let [searchParams] = useSearchParams();
     const videoId = searchParams.get('v');
-    // console.log(videoId)
 
+    const [commentsList, setCommentList] = useState();
+
+    useEffect(() => {
+        hideSidebarfn();
+        getComments();
+    }, [])
+
+    async function getComments(){
+        const comments = await fetch(" https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies%2Cid&maxResults=50&videoId=" + videoId + "&key=" + google_api_key)
+        const commentData = await comments.json();
+        setCommentList(commentData);
+        console.log(commentsList)
+    }
     
-
     return (        
         <div className='w-100 basis-full pr-3'>
             <div className='basis-full flex'>
