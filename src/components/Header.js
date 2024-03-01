@@ -73,7 +73,6 @@ const Header = () => {
                                         suggestions.map(function (suggestion) {
                                             return (<li className='hover:bg-gray-100 flex gap-3 px-4 py-1 cursor-pointer' key={"suggestion" + suggestion}
                                                 onClick={(e) => {
-                                                    // setSearchVal(suggestion); 
                                                     setSearchVal(suggestion);
                                                     searchInput.value = searchVal
                                                 }}

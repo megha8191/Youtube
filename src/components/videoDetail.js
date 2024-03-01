@@ -11,16 +11,9 @@ const Videodetail = () => {
     const hii = () => dispatch(hideSidebar());
     const dispatch = useDispatch();
     const sidebar= document.getElementById('sidebar')
-    
 
     useEffect(() => {
         hii();
-        try{
-            sidebar.style.opacity="0";      
-        }
-        catch{    
-        }
-        // return ()=>sidebar.style.opacity="1"
     }, [])
 
     let [searchParams] = useSearchParams();

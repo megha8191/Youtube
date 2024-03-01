@@ -16,7 +16,8 @@ body{
   @apply flex gap-3 cursor-pointer py-2 px-3 mb-1 rounded-lg
 }
 
-.sidebar-list li:hover{
+.sidebar-list li:hover,
+.sidebar-list .active{
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
   font-weight: 500;
