@@ -27,3 +27,13 @@ var nameList = [
 export const generateRandomName= () =>{
    return nameList[Math.floor( Math.random() * nameList.length )];
 };
+
+export function convertDurationToTime(duration) {
+  const timeArray = duration.match(/\d+/g);
+  return timeArray.map((unit, index) => (index === 0 ? unit + 'h ' : index === 1 ? unit + 'm ' : unit + 's')).join('').trim();
+}
+
+export function formatViewCount(viewCount) {
+  const num = parseInt(viewCount, 10);
+  return isNaN(num) ? viewCount : num < 1e3 ? num : `${Math.floor(num / 1e3)}k`;
+}

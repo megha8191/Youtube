@@ -2,7 +2,6 @@
 import React from 'react'
 
 
-
 const commentsList = [
   { 
     text:"Lorem ipsum dolor sit amet, consectetur adip",

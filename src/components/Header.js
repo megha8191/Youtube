@@ -2,16 +2,14 @@ import React, { useEffect, useState } from 'react'
 import logo from "../assets/logo.png"
 import { toggleNav } from '../utils/appSlice'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { search_autocomplete_api } from '../utils/constant'
-import { searchCache } from '../utils/searchSlice'
-import { google_api_key } from '../utils/constant'
+import { searchCache ,storeResults} from '../utils/searchSlice'
 
 const Header = () => {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const clickNav = () => dispatch(toggleNav());
-
-    const [SearchResults, setSearchResults] = useState();
 
     const [searchVal, setSearchVal] = useState("");
     const [suggestions, setSuggestions] = useState();
@@ -19,6 +17,17 @@ const Header = () => {
 
     const storeCacheResult = useSelector(store => store.search);
     const searchInput = document.getElementById("main-search")
+    
+    function goSearchPage(suggestion){
+        navigate("/results?searchQuery="+ suggestion)
+    }
+
+    async function getSuggestions() {
+        const suggest = await fetch(search_autocomplete_api + searchVal);
+        const json = await suggest.json();
+        setSuggestions(json[1])
+        dispatch(searchCache({ [searchVal]: json[1] }));
+    }
 
     useEffect(() => {
         if (searchVal) {
@@ -28,27 +37,12 @@ const Header = () => {
             if (storeCacheResult[searchVal]) { setSuggestions(storeCacheResult[searchVal]); }
             else { getSuggestions(); };
         }, 400);
-        getResults()
-
+        
         return () => {
             clearTimeout(timer);
         }
     }, [searchVal])
 
-    async function getResults() {
-        const searchfetch = await fetch("https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=15&q=" + searchVal + "&key=" + google_api_key);
-        const searchData = await searchfetch.json();
-        setSearchResults(searchData.items)
-        console.log(SearchResults)
-    }
-
-    async function getSuggestions() {
-        const suggest = await fetch(search_autocomplete_api + searchVal);
-        const json = await suggest.json();
-        setSuggestions(json[1])
-
-        dispatch(searchCache({ [searchVal]: json[1] }));
-    }
 
     return (
         <header className='z-99 h-16'>
@@ -66,7 +60,7 @@ const Header = () => {
                 <div className='w-2/4' >
                     <form className='w-full flex' onSubmit={(e) => {
                         e.preventDefault();
-                        getResults()}
+                        goSearchPage(searchVal);}
                         } >
                         <div className='w-full relative'  >
                             <input type='search' placeholder='Search'
@@ -96,8 +90,8 @@ const Header = () => {
                                         suggestions.map(function (suggestion) {
                                             return (<li className='hover:bg-gray-100 flex gap-3 px-4 py-1 cursor-pointer' key={"suggestion" + suggestion}
                                                 onMouseDown={(e) => {
-                                                    setSearchVal(suggestion);
-                                                    searchInput.value = searchVal
+                                                    setSearchVal(suggestion)
+                                                    goSearchPage(suggestion);
                                                 }}>
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
                                                     <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
@@ -105,7 +99,6 @@ const Header = () => {
                                                 <span >{suggestion}</span></li>)
                                         })
                                     ) : setShowSuggestions(false)}
-
                                 </ul>)}
                         </div>
                         <button type="submit" className='py-2 px-4 bg-gray-200 rounded-r-full border  border-gray-400 border-l-transparent' id="submit_search">
@@ -114,7 +107,6 @@ const Header = () => {
                             </svg>
                         </button>
                     </form>
-
                 </div>
                 <div className='w-1/4 text-right'>
                     <img className='h-10 ml-auto block' src="https://static.vecteezy.com/system/resources/previews/007/296/443/non_2x/user-icon-person-icon-client-symbol-profile-icon-vector.jpg" alt="user-img" />

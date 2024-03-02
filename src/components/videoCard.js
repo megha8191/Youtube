@@ -1,16 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import {convertDurationToTime,formatViewCount} from "../utils/helper.js"
 
-
-function convertDurationToTime(duration) {
-    const timeArray = duration.match(/\d+/g);
-    return timeArray.map((unit, index) => (index === 0 ? unit + 'h ' : index === 1 ? unit + 'm ' : unit + 's')).join('').trim();
-}
-
-function formatViewCount(viewCount) {
-    const num = parseInt(viewCount, 10);
-    return isNaN(num) ? viewCount : num < 1e3 ? num : `${Math.floor(num / 1e3)}k`;
-}
 
 const VideoCard = (video) => {
     // console.log(video)

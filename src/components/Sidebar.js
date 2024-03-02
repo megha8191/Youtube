@@ -1,19 +1,20 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { updateCat } from '../utils/appSlice';
+import { useNavigate } from 'react-router-dom';
 
 const Sidebar = () => {
+  const navigate = useNavigate();
   const videoCategory= useSelector((store)=>store.app.videoCategory);
   const dispatch = useDispatch();
 
-  
   const nav = useSelector(store => store.app.isOpen)
   return (
-    <div className='basis-auto' id="sidebar">
+    <div className= {(!nav)? 'basis-auto min-w-16' : 'basis-auto sidebar-open min-w-56' } id="sidebar">
       <div className=''>
         <div className='h-3'></div>
-        <ul className='px-3 pr-7 lg:pe-5 sidebar-list mt-1 '>
-          <li className='bg-gray-100 font-medium' onClick={() => dispatch(updateCat(0))}>
+        <ul className='lg:px-3 px-2 lg:pr-7 lg:pe-5 sidebar-list mt-1 fixed'>
+          <li className='bg-gray-100 font-medium' onClick={() => { navigate("/"); dispatch(updateCat(0))}}>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
               <path strokeLinecap="round" strokeLinejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
             </svg>
@@ -31,7 +32,7 @@ const Sidebar = () => {
             </svg>
             {(!nav) ? "" : <span className="nav-list-name"> Subscriptions</span>}
           </li>
-          <li onClick={() => dispatch(updateCat(10))}>
+          <li onClick={() => { navigate("/"); dispatch(updateCat(10))}}>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
               <path strokeLinecap="round" strokeLinejoin="round" d="m9 9 10.5-3m0 6.553v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 1 1-.99-3.467l2.31-.66a2.25 2.25 0 0 0 1.632-2.163Zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 0 1-.99-3.467l2.31-.66A2.25 2.25 0 0 0 9 15.553Z" />
             </svg>
@@ -39,44 +40,44 @@ const Sidebar = () => {
           </li>
           <hr className='my-4'>
           </hr>
-          <p className='text-lg font-semibold m-2'>Explore</p>
-          <li onClick={() => dispatch(updateCat(0))}>
+          {(!nav) ? "" : <p className='text-lg font-semibold m-2'>Explore</p>}
+          <li onClick={() => { navigate("/"); dispatch(updateCat(0))}}>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
               <path strokeLinecap="round" strokeLinejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" />
             </svg>
             {(!nav) ? "" : <span className="nav-list-name"> Trending</span>}
           </li>
-          <li onClick={() => dispatch(updateCat(10))}>
+          <li onClick={() => { navigate("/"); dispatch(updateCat(10))}}>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
               <path strokeLinecap="round" strokeLinejoin="round" d="m9 9 10.5-3m0 6.553v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 1 1-.99-3.467l2.31-.66a2.25 2.25 0 0 0 1.632-2.163Zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 0 1-.99-3.467l2.31-.66A2.25 2.25 0 0 0 9 15.553Z" />
             </svg>
             {(!nav) ? "" : <span className="nav-list-name"> Music</span>}
           </li>
-          <li onClick={() => dispatch(updateCat(20))}>
+          <li onClick={() => { navigate("/"); dispatch(updateCat(20))}}>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
               <path strokeLinecap="round" strokeLinejoin="round" d="m9 9 10.5-3m0 6.553v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 1 1-.99-3.467l2.31-.66a2.25 2.25 0 0 0 1.632-2.163Zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 0 1-.99-3.467l2.31-.66A2.25 2.25 0 0 0 9 15.553Z" />
             </svg>
             {(!nav) ? "" : <span className="nav-list-name">Gaming</span>}
           </li>
-          <li onClick={() => dispatch(updateCat(25))}>
+          <li onClick={() => { navigate("/"); dispatch(updateCat(25))}}>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
               <path strokeLinecap="round" strokeLinejoin="round" d="m9 9 10.5-3m0 6.553v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 1 1-.99-3.467l2.31-.66a2.25 2.25 0 0 0 1.632-2.163Zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 0 1-.99-3.467l2.31-.66A2.25 2.25 0 0 0 9 15.553Z" />
             </svg>
             {(!nav) ? "" : <span className="nav-list-name">News</span>}
           </li>
-          <li onClick={() => dispatch(updateCat(17))}>
+          <li onClick={() => { navigate("/"); dispatch(updateCat(17))}}>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
               <path strokeLinecap="round" strokeLinejoin="round" d="m9 9 10.5-3m0 6.553v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 1 1-.99-3.467l2.31-.66a2.25 2.25 0 0 0 1.632-2.163Zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 0 1-.99-3.467l2.31-.66A2.25 2.25 0 0 0 9 15.553Z" />
             </svg>
             {(!nav) ? "" : <span className="nav-list-name"> Sports</span>}
           </li>
-          <li onClick={() => dispatch(updateCat(28))}>
+          <li onClick={() => { navigate("/"); dispatch(updateCat(28))}}>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
               <path strokeLinecap="round" strokeLinejoin="round" d="m9 9 10.5-3m0 6.553v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 1 1-.99-3.467l2.31-.66a2.25 2.25 0 0 0 1.632-2.163Zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 0 1-.99-3.467l2.31-.66A2.25 2.25 0 0 0 9 15.553Z" />
             </svg>
             {(!nav) ? "" : <span className="nav-list-name"> Learning</span>}
           </li>
-          <li onClick={() => dispatch(updateCat(26))}>
+          <li onClick={() => { navigate("/"); dispatch(updateCat(26))}}>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
               <path strokeLinecap="round" strokeLinejoin="round" d="m9 9 10.5-3m0 6.553v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 1 1-.99-3.467l2.31-.66a2.25 2.25 0 0 0 1.632-2.163Zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 0 1-.99-3.467l2.31-.66A2.25 2.25 0 0 0 9 15.553Z" />
             </svg>

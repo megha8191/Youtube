@@ -6,7 +6,6 @@ import Comments from './comments';
 import LiveChat from './liveChat';
 import { google_api_key } from '../utils/constant';
 
-
 const Videodetail = () => {
     const hideSidebarfn = () => dispatch(hideSidebar());
     const dispatch = useDispatch();
@@ -24,7 +23,7 @@ const Videodetail = () => {
     async function getComments(){
         const comments = await fetch(" https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies%2Cid&maxResults=50&videoId=" + videoId + "&key=" + google_api_key)
         const commentData = await comments.json();
-        setCommentList(commentData);
+        setCommentList(commentData.items);
         console.log(commentsList)
     }
     
@@ -35,7 +34,6 @@ const Videodetail = () => {
                     <iframe width="950" style={{ maxWidth: "100%" }} height="500" src={"https://www.youtube.com/embed/" + videoId} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
                     <div className='Comments'>
                 <Comments/>
-            
             </div>
                 </div>
                 <div className='basis-2/6 pl-3 pr-3'>

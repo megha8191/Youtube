@@ -9,6 +9,7 @@ import { Provider } from 'react-redux';
 import store from './utils/store';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Videodetail from './components/videoDetail';
+import SearchResults from './components/SearchResults';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -34,8 +35,8 @@ const approuter = createBrowserRouter([
         element: <Videodetail />
       },
       {
-        path:"/video",
-        element:<Videodetail/>
+        path:"/results",
+        element:<SearchResults/>
       }
     ]
   }
