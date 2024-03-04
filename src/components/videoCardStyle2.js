@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-
+import { timeAgo } from '../utils/helper';
 const VideoCardStyle2 = ({ item }) => {
     const { snippet, id } = item;
-    const { thumbnails, title, channelTitle, description, liveBroadcastContent } = snippet;
+    const { thumbnails, title, channelTitle, description, liveBroadcastContent,publishedAt} = snippet;
 
     return (
         <Link to={"/watch?v=" + id.videoId} className='lg:grid-cols-[360px,1fr,auto] grid-cols-[240px,1fr,auto] sm:grid w-full gap-4 mt-4'>
@@ -17,7 +17,10 @@ const VideoCardStyle2 = ({ item }) => {
             </div>
             <div className='py-1'>
                 <h3 className='font-medium md:text-xl text-lg line-clamp-2'>{title}</h3>
-                {/* <p className="text-gray-500 text-sm pt-1 -mt-1 gap-1 inline-flex flex-wrap line-clamp-1"><span>{formatViewCount(statistics.viewCount)}  views</span> &bull; <span>8 months ago</span></p> */}
+                <p className='text-sm opacity-90 line-clamp-1 my-1'>
+                    {/* <span className=''>{numberWithCommas(viewCount)} views</span> */}
+                    <span className=''>{timeAgo(publishedAt)}</span>
+                </p>
                 <div className="w-100 flex sm:my-3 my-1 gap-2 items-center">
                     <span className="basis-auto bg-gray-400 rounded-full w-7 h-7"></span>
                     <div className=" basis-5/6 col-span-11 ">

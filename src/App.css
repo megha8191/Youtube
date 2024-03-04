@@ -64,7 +64,7 @@ body {
     top: 56px;
     left: 0;
     max-height: calc(100vh - 56px);
-    padding-top: 7px;
+    padding-top: 15px;
   }
   .main-video-grid {
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr))

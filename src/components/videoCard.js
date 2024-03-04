@@ -1,11 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import {convertDurationToTime,formatViewCount} from "../utils/helper.js"
+import {convertDurationToTime,formatViewCount,timeAgo} from "../utils/helper.js"
 
 const VideoCard = (video) => {
     // console.log(video)
     const { statistics, snippet, id, contentDetails } = video.item;
-    const { thumbnails, title, channelTitle } = snippet
+    const { thumbnails, title, channelTitle ,publishedAt} = snippet
     return (
         <Link to={"/watch?v="+ id} key={"ji"+ id} className='w-100 cursor-pointer'>
             <div className='relative rounded-lg overflow-hidden'>
@@ -17,8 +17,8 @@ const VideoCard = (video) => {
                 <div className=' basis-5/6 col-span-11 pt-1'>
                     <p className='font-medium text-black line-clamp-2'>{title}</p>
                     <p key={channelTitle + id} className='text-gray-500 text-sm line-clamp-1'>{channelTitle}</p>
-                    <p key={"views" + id} className='text-gray-500 text-sm'>
-                        <span>{formatViewCount(statistics.viewCount)} views</span> <span>1 day ago</span>
+                    <p key={"views" + id} className='text-gray-500 text-sm flex gap-1'>
+                        <span>{formatViewCount(statistics.viewCount)} views</span>&bull;<span>{timeAgo(publishedAt)}</span>
                     </p>
                 </div>
             </div>

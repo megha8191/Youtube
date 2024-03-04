@@ -15,7 +15,7 @@ const Main = () => {
   }, [videoCategory]);
 
   async function getVideosList() {
-    const data = await fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=IN&videoCategoryId=" + videoCategory + "&key=" + google_api_key)
+    const data = await fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics%2CliveStreamingDetails&chart=mostPopular&maxResults=50&regionCode=IN&videoCategoryId=" + videoCategory + "&key=" + google_api_key)
     const vdata = await data.json();
     const vdata_items = await vdata.items
     setvideoList(vdata_items)
