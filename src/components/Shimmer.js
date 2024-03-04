@@ -5,7 +5,7 @@ export const SearchShimmer =()=>{
   <div className='w-full'> 
       {
         Array(4).fill().map((val, index) => {
-          return <div className='lg:grid-cols-[360px,1fr,auto] grid-cols-[240px,1fr,auto] sm:grid w-full gap-4 mt-4' key={index}>
+          return <div className='lg:grid-cols-[360px,1fr,auto] grid-cols-[240px,1fr,auto] sm:grid w-full gap-4 mt-4' key={"sh"+index}>
           <div className='relative w-full'>
               <div className='shimmerBG bg-gray-300 rounded-lg  lg:h-52 md:h-40 sm:h-44 h-56  w-full '></div>
           </div>

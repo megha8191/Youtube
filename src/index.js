@@ -10,6 +10,8 @@ import store from './utils/store';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Videodetail from './components/videoDetail';
 import SearchResults from './components/SearchResults';
+import History from './components/History';
+import Subscription from './components/Subscription';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -37,7 +39,15 @@ const approuter = createBrowserRouter([
       {
         path:"/results",
         element:<SearchResults/>
-      }
+      },
+      {
+        path: "/history",
+        element: <History/>
+      },
+      {
+        path: "/subscriptions",
+        element: <Subscription/>
+      },
     ]
   }
 ]);

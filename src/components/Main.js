@@ -11,11 +11,11 @@ const Main = () => {
 
   const [videoList, setvideoList] = useState();  
   useEffect(() => {
-    getRestaurant();
+    getVideosList();
   }, [videoCategory]);
 
-  async function getRestaurant() {
-    const data = await fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=20&regionCode=US&videoCategoryId=" + videoCategory + "&key=" + google_api_key)
+  async function getVideosList() {
+    const data = await fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=IN&videoCategoryId=" + videoCategory + "&key=" + google_api_key)
     const vdata = await data.json();
     const vdata_items = await vdata.items
     setvideoList(vdata_items)
@@ -29,7 +29,7 @@ const Main = () => {
   } 
   else return (
     <>
-      <ul className='upper-tags w-full mb-8'>
+      <ul className='upper-tags w-full mb-8 '>
         {tags.map(function (tag) {
           return <li key={tag}>{tag}</li>
         })}

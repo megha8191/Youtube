@@ -1,53 +1,89 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap')l;
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-html{
+html {
   font-size: 16px;
 }
 
-body{
+body {
   font-family: "Roboto", sans-serif;
 }
 
-.sidebar-list li{
-  @apply flex gap-3 cursor-pointer py-2 px-3 mb-1 rounded-lg
+.sidebar-list {
+  padding-top: 18px;
+  max-height: calc(100vh - 60px);
+  position: fixed;
+  top:60px;
+}
+
+.sidebar-list li {
+  @apply flex gap-3 cursor-pointer py-2 lg:px-3 px-2 mb-1 rounded-lg
+}
+.sidebar-list li a{
+  @apply flex gap-3
 }
 
 .sidebar-list li:hover,
-.sidebar-list .active{
+.sidebar-list .active {
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
   font-weight: 500;
 }
 
-.upper-tags li{
-  margin-right: 0.75rem;
-  display: inline-block;
-  cursor: pointer;
-  border-radius: 0.5rem;
+.upper-tags li {
+  @apply mr-2 inline-block rounded-lg cursor-pointer py-2 md:px-3 px-2 text-sm font-medium mb-1;
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  font-weight: 500;
+
 }
 
-.upper-tags li::first-letter{
+.upper-tags li::first-letter {
   text-transform: uppercase;
 }
-.main-video-grid{
-  grid-template-columns: repeat( auto-fit,minmax(320px,1fr))
 
+.main-video-grid {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))
 }
-.nav-list-name{
-  min-width:140px;
+
+.nav-list-name {
+  min-width: 140px;
   width: 140px;
   word-break: break-all;
+}
+#searchForm{
+  display: flex;
+}
+@media (max-width:1024px) {
+  #sidebar.sidebar-open ul {
+    position: fixed;
+    bottom: 0;
+    background: #fff;
+    z-index: 999;
+    top: 56px;
+    left: 0;
+    max-height: calc(100vh - 56px);
+    padding-top: 7px;
+  }
+  .main-video-grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr))
+  }
+}
+@media (max-width:640px) {
+  #searchForm{
+    display: none;
+  }
+  #searchForm.search-mobile{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #fff;
+    display: flex;
+    right: 10px;
+  }
+  .search-mb{
+    display: none;
+  }
+  
 }
