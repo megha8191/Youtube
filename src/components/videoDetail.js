@@ -81,7 +81,7 @@ const Videodetail = () => {
                             <div className='grid grid-cols-[auto,1fr] gap-2 mt-3'>
                                 <div className='flex items-center lg:gap-6 gap-4'>
                                     <div className=" flex sm:gap-2 gap-1 items-start">
-                                        <img src={channelInfo?.snippet?.thumbnails?.high?.url} className="basis-auto block bg-gray-400 rounded-full w-8 h-8" />
+                                        <img src={channelInfo?.snippet?.thumbnails?.medium?.url} className="basis-auto block bg-gray-400 rounded-full w-8 h-8" />
                                         <div className=" basis-auto grow ">
                                             <p className="font-medium mb-0 -mt-[2px]">{channelTitle}</p>
                                             <p className="text-gray-500 text-xs h-3">{formatViewCount(channelInfo?.statistics?.subscriberCount)} subscribers</p >

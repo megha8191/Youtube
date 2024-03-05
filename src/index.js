@@ -54,6 +54,8 @@ const approuter = createBrowserRouter([
         element:<Live/>
       }
     ]
+  }, {
+    // basename: "/Youtube", // Replace with your actual repository name
   }
 ]);
 
