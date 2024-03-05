@@ -2,11 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { google_api_key } from '../utils/constant'
 import { Link } from 'react-router-dom'
 import { timeAgo,formatViewCount } from '../utils/helper'
-import { SearchShimmer } from './Shimmer'
 
 const RelatableVideoCard =({video})=>{
     console.log(video)
-    const { statistics, snippet, id, contentDetails } = video;
+    const { statistics, snippet, id } = video;
     const { thumbnails, title, channelTitle ,publishedAt} = snippet;
     return (
     <Link to={"/watch?v="+ id} key={"relate"+ id} className=" xl-grid-cols-[160px,1fr] lg:grid-cols-[140px,1fr] sm:grid w-full gap-2 mt-4">

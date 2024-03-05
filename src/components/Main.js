@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { google_api_key, youtube_api } from '../utils/constant';
+import { google_api_key } from '../utils/constant';
 import VideoCard from "./videoCard"
-import { useDispatch, useSelector } from 'react-redux';
-import { updateCat } from '../utils/appSlice';
+import { useSelector } from 'react-redux';
 import Shimmer from './Shimmer';
 import { Link } from 'react-router-dom';
 
 const Main = () => {
   const videoCategory = useSelector((store) => store.app.videoCategory);
-  const [channelInfo, setChannelInfo] = useState();
   const [videoList, setvideoList] = useState();
 
   useEffect(() => {

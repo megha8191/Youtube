@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { google_api_key } from '../utils/constant';
 import { Link } from 'react-router-dom';
-import {convertDurationToTime,formatViewCount,timeAgo} from "../utils/helper.js"
-import Shimmer, { ShimmerCard } from './Shimmer';
+import {convertDurationToTime,timeAgo} from "../utils/helper.js"
+import Shimmer from './Shimmer';
 
 const Live = () => {
 

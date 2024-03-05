@@ -122,15 +122,4 @@ const Comments = (item) => {
   )
 }
 
-const Commentdiv = () => {
-  return (
-    <div className='mt-5'>
-      <b className='text-xl font-bold'>Comments</b>
-      <div className=''>
-
-      </div>
-    </div>
-  )
-}
-
 export default Comments
