@@ -13,6 +13,7 @@ import SearchResults from './components/SearchResults';
 import History from './components/History';
 import Subscription from './components/Subscription';
 import Live from './components/Live';
+import Error from './components/Error';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -28,6 +29,7 @@ const approuter = createBrowserRouter([
   {
     path: "/",
     element: <App/>,
+    errorElement:<Error/>,
     children: [
       {
         path:"/",
@@ -55,7 +57,7 @@ const approuter = createBrowserRouter([
       }
     ]
   }, {
-    // basename: "/Youtube", // Replace with your actual repository name
+    basename: "/Youtube",
   }
 ]);
 

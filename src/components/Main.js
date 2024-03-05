@@ -4,6 +4,7 @@ import VideoCard from "./videoCard"
 import { useDispatch, useSelector } from 'react-redux';
 import { updateCat } from '../utils/appSlice';
 import Shimmer from './Shimmer';
+import { Link } from 'react-router-dom';
 
 const Main = () => {
   const videoCategory = useSelector((store) => store.app.videoCategory);
@@ -38,7 +39,7 @@ const Main = () => {
     return channel;
   }
   
-  const tags = ["Exams", "Skincare", "Haul", "Recruitment", "sales head"]
+  // const tags = ["Exams", "Skincare", "Haul", "Recruitment", "sales head"]
 
   if (!videoList) {
     return <Shimmer />;
@@ -46,9 +47,11 @@ const Main = () => {
   else return (
     <>
       <ul className='upper-tags w-full mb-8 '>
-        {tags.map(function (tag) {
+        <li><Link to="/live">Live</Link></li>
+        <li><Link to="/subscriptions">Subscriptions</Link></li>
+        {/* {tags.map(function (tag) {
           return <li key={tag}>{tag}</li>
-        })}
+        })} */}
       </ul>
       <div className='grid main-video-grid gap-x-4 gap-y-8 w-full'>
         {videoList.map(function (video) {

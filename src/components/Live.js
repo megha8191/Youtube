@@ -20,6 +20,14 @@ const Live = () => {
   return (liveVideos)?
    (
     <div>
+      <ul className='upper-tags w-full mb-8 '>
+        <li><Link to="/live">Live</Link></li>
+        <li><Link to="/subscriptions">Subscriptions</Link></li>
+        <li><Link to="/">Trending</Link></li>
+        {/* {tags.map(function (tag) {
+          return <li key={tag}>{tag}</li>
+        })} */}
+      </ul>
        <div className='grid main-video-grid gap-x-4 gap-y-8 w-full'>
         {liveVideos.map(function (video) {
           console.log(video)
