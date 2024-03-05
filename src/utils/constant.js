@@ -3,8 +3,8 @@
 
 // export const google_api_key= "AIzaSyCERZDyfPzmGEjhw2XtAYoTxzgYBw4zfy4"
 
-// export const google_api_key="AIzaSyAIWnqZCBkhdUDqHs47v-6tBRmGWDQBu3k"
-export const google_api_key="AIzaSyDaYOvtKdmH5SKCKnQZ4uBzuJKGmvzu0jE"
+export const google_api_key="AIzaSyAIWnqZCBkhdUDqHs47v-6tBRmGWDQBu3k"
+// export const google_api_key="AIzaSyDaYOvtKdmH5SKCKnQZ4uBzuJKGmvzu0jE"
 
 
 export const youtube_api = "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=US&videoCategoryId=0&key="+google_api_key;

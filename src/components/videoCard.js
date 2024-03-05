@@ -1,13 +1,20 @@
-import React from 'react'
+import React,{useEffect, useState} from 'react'
 import { Link } from 'react-router-dom';
 import {convertDurationToTime,formatViewCount,timeAgo} from "../utils/helper.js"
 
-const VideoCard = (video) => {
-    // console.log(video)
-    const { statistics, snippet, id, contentDetails } = video.item;
+const VideoCard = ({ item: video, channel })=> {
+    const [channelData,setchannelData]=useState();
+    useEffect(() => {
+        const fetchData = async () => {
+          const channelData = await channel;
+          setchannelData(channelData)
+        };
+        fetchData();
+      }, [channel]);
+    const { statistics, snippet, id, contentDetails } = video;
     const { thumbnails, title, channelTitle ,publishedAt,liveBroadcastContent} = snippet
     return (
-        <Link to={"/watch?v="+ id} key={"ji"+ id} className='w-100 cursor-pointer'>
+        <Link to={"/watch?v="+ id} key={"videoItem"+ id} className='w-100 cursor-pointer'>
             <div className='relative rounded-lg overflow-hidden'>
                 {(liveBroadcastContent === "live") ? <p className="text-base bg-red-600  text-white absolute bottom-1 py-1 px-3 rounded right-1 inline-flex items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 mr-1 h-5">
@@ -18,7 +25,7 @@ const VideoCard = (video) => {
                 {(contentDetails?.duration) && <p className='text-xs bg-black text-white absolute bottom-1 py-1 px-2 rounded right-1 '>{convertDurationToTime(contentDetails?.duration)}</p>}
             </div>
             <div className='w-100 flex pt-3 sm:gap-3 gap-2'>
-                <span className='basis-auto bg-gray-400 rounded-full sm:w-9 sm:h-9 h-8 w-8'></span>
+                <img src={channelData?.snippet?.thumbnails?.medium?.url}  className='basis-auto bg-gray-400 rounded-full sm:w-9 sm:h-9 h-8 w-8'/>
                 <div className=' basis-5/6 col-span-11 pt-1'>
                     <p className='font-medium text-black line-clamp-2'>{title}</p>
                     <p key={channelTitle + id} className='text-gray-500 text-sm line-clamp-1'>{channelTitle}</p>

@@ -65,8 +65,8 @@ const Videodetail = () => {
         const { title, description, channelTitle, publishedAt, liveBroadcastContent } = videoInfo.snippet;
         const truncatedDescription = isFullDescription ? description : `${description.slice(0, 200)}...`;
         return (
-            <div className='w-100 basis-full pr-3 max-w-screen-2xl mx-auto'>
-                <div className='basis-full grid lg:grid-cols-[1fr,400px] md:grid-cols-[1fr,360px] grid-cols-1 gap-3'>
+            <div className='w-100 basis-full max-w-screen-2xl mx-auto'>
+                <div className='basis-full grid xl:grid-cols-[1fr,minmax(400px,440px)] lg:grid-cols-[1fr,380px] grid-cols-1 gap-3'>
                     {(videoInfo) ? (
                     <div className=''>
                         <div className='videoInformation'>

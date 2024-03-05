@@ -9,7 +9,7 @@ const RelatableVideoCard =({video})=>{
     const { statistics, snippet, id, contentDetails } = video;
     const { thumbnails, title, channelTitle ,publishedAt} = snippet;
     return (
-    <Link to={"/watch?v="+ id} key={"relate"+ id} className=" grid-cols-[160px,1fr] sm:grid w-full gap-2 mt-4">
+    <Link to={"/watch?v="+ id} key={"relate"+ id} className=" xl-grid-cols-[160px,1fr] lg:grid-cols-[140px,1fr] sm:grid w-full gap-2 mt-4">
         <div className="relative w-full">
             <img className="w-full rounded-lg object-cover h-24 " src={thumbnails?.medium?.url || thumbnails?.maxres?.url} alt="thumbnail" />
         </div>
