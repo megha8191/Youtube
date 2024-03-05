@@ -45,7 +45,7 @@ const Recommended = ({related,notof}) => {
         getVideosList();
     },[])
 
-    return (!recommendedList)?<SearchShimmer/>: (
+    return (!recommendedList)?"Load": (
     <div>
         {recommendedList.map(function(video){
             return (video.id===notof)?"":<RelatableVideoCard video={video} key={video?.id}/>

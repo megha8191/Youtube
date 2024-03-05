@@ -7,7 +7,7 @@ import LiveChat from './liveChat';
 import { google_api_key } from '../utils/constant';
 import { formatViewCount, numberWithCommas, timeAgo } from '../utils/helper';
 import Recommended from './Recommended';
-import { ShimmerCard, VideoPlayShimmer } from './Shimmer';
+import { SearchShimmer, ShimmerCard, VideoPlayShimmer } from './Shimmer';
 
 const Videodetail = () => {
     const hideSidebars = () => dispatch(hideSidebar());
@@ -17,7 +17,7 @@ const Videodetail = () => {
     const videoId = searchParams.get('v');
     const [videoInfo, setVideoInfo] = useState();
     const [commentsList, setCommentList] = useState();
-    const[channelInfo,setChannelInfo]= useState();
+    const [channelInfo, setChannelInfo] = useState();
     // description
     const [isFullDescription, setIsFullDescription] = useState(false);
     const toggleDescription = () => {
@@ -29,9 +29,9 @@ const Videodetail = () => {
             hideSidebars();
             const channelId = await getVideoInfo();
             getComments();
-            if(channelId){
+            if (channelId) {
                 await getChannelDetail(channelId)
-            } 
+            }
         }
         fetchData();
         return () => {
@@ -53,22 +53,22 @@ const Videodetail = () => {
         const jsondata = await data.json();
         setCommentList(jsondata.items);
     }
-    async function getChannelDetail(channelId){
-        const data = await fetch("https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=" + channelId + "&key=" +  google_api_key)
-        const jsondata= await data.json();
+    async function getChannelDetail(channelId) {
+        const data = await fetch("https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=" + channelId + "&key=" + google_api_key)
+        const jsondata = await data.json();
         setChannelInfo(jsondata.items[0])
     }
 
-    if (!videoInfo)
-        return <VideoPlayShimmer/>
-    else{
+    if (videoInfo)
+     {
         const { likeCount, commentCount, viewCount } = videoInfo.statistics;
         const { title, description, channelTitle, publishedAt, liveBroadcastContent } = videoInfo.snippet;
         const truncatedDescription = isFullDescription ? description : `${description.slice(0, 200)}...`;
         return (
             <div className='w-100 basis-full pr-3 max-w-screen-2xl mx-auto'>
                 <div className='basis-full grid lg:grid-cols-[1fr,400px] md:grid-cols-[1fr,360px] grid-cols-1 gap-3'>
-                    <div className='w-100'>
+                    {(videoInfo) ? (
+                    <div className=''>
                         <div className='videoInformation'>
                             <iframe
                                 width="100%" height="500" style={{ maxWidth: "100%", borderRadius: "8px" }}
@@ -81,7 +81,7 @@ const Videodetail = () => {
                             <div className='grid grid-cols-[auto,1fr] gap-2 mt-3'>
                                 <div className='flex items-center lg:gap-6 gap-4'>
                                     <div className=" flex sm:gap-2 gap-1 items-start">
-                                        <img src={channelInfo?.snippet?.thumbnails?.high?.url} className="basis-auto block bg-gray-400 rounded-full w-8 h-8"/>
+                                        <img src={channelInfo?.snippet?.thumbnails?.high?.url} className="basis-auto block bg-gray-400 rounded-full w-8 h-8" />
                                         <div className=" basis-auto grow ">
                                             <p className="font-medium mb-0 -mt-[2px]">{channelTitle}</p>
                                             <p className="text-gray-500 text-xs h-3">{formatViewCount(channelInfo?.statistics?.subscriberCount)} subscribers</p >
@@ -125,12 +125,13 @@ const Videodetail = () => {
                                 commentsList.map(function (item) {
                                     return (<Comments info={item} key={item.id} />)
                                 })
-                            ) : <p className='py-6 text-center'>No Comments ...</p>}
+                            ) : <p className='py-6 text-center'>No Comments yet...</p>}
                         </div>
                     </div>
+                    ) : <div className='w-full'><VideoPlayShimmer /></div>}
                     <div className='pl-3 pr-3'>
                         {(liveBroadcastContent === "live") ? <LiveChat /> : ""}
-                        {(videoInfo)?<Recommended related={videoInfo.snippet.categoryId} notof={videoId}/>:""}
+                        {(videoInfo) ? <Recommended related={videoInfo.snippet.categoryId} notof={videoId} /> : <SearchShimmer />}
                     </div>
                 </div>
             </div>

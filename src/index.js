@@ -12,6 +12,7 @@ import Videodetail from './components/videoDetail';
 import SearchResults from './components/SearchResults';
 import History from './components/History';
 import Subscription from './components/Subscription';
+import Live from './components/Live';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -48,6 +49,10 @@ const approuter = createBrowserRouter([
         path: "/subscriptions",
         element: <Subscription/>
       },
+      {
+        path:"/live",
+        element:<Live/>
+      }
     ]
   }
 ]);

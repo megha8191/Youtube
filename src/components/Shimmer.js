@@ -20,21 +20,6 @@ export const SearchShimmer =()=>{
     </div>
   )
 }
-
-export const ShimmerCard = () => {
-  return (
-    <div className='p-2 w-full cursor-pointer'>
-      <div className='shimmerBG rounded-lg bg-gray-300 w-auto h-44'></div>
-      <div className='flex justify-start items-start mt-2'>
-        <div className='shimmerBG bg-gray-300 rounded-full w-10 h-9 mt-2 mr-2'></div>
-        <div className='flex flex-col items-start w-full'>
-          <div className='shimmerBG bg-gray-300 my-1 rounded w-5/6 h-5'></div>
-          <div className='shimmerBG bg-gray-300 my-1 rounded w-3/6 h-4'></div>
-        </div>
-      </div>
-    </div>
-  )
-}
 export const VideoPlayShimmer =()=>{
   return (
     <div className='p-2 w-full cursor-pointer'>
@@ -58,6 +43,20 @@ const Shimmer = () => {
           return <ShimmerCard key={index} />
         })
       }
+    </div>
+  )
+}
+export const ShimmerCard = () => {
+  return (
+    <div className='p-2 w-full cursor-pointer'>
+      <div className='shimmerBG rounded-lg bg-gray-300 w-auto h-44'></div>
+      <div className='flex justify-start items-start mt-2'>
+        <div className='shimmerBG bg-gray-300 rounded-full w-10 h-9 mt-2 mr-2'></div>
+        <div className='flex flex-col items-start w-full'>
+          <div className='shimmerBG bg-gray-300 my-1 rounded w-5/6 h-5'></div>
+          <div className='shimmerBG bg-gray-300 my-1 rounded w-3/6 h-4'></div>
+        </div>
+      </div>
     </div>
   )
 }
