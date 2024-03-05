@@ -56,8 +56,6 @@ const approuter = createBrowserRouter([
         element:<Live/>
       }
     ]
-  }, {
-    basename: "/Youtube",
   }
 ]);
 
