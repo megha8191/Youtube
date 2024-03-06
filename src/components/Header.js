@@ -99,10 +99,10 @@ const Header = () => {
                                 onChange={(e) => {
                                     const inputValue = e.target.value.trim();
                                         if (inputValue) {
-                                            console.log('gi')
+                                            setSearchVal(e.target.value);
                                         }
                                     // if (e.target.value.trim()) {
-                                    //     setSearchVal(e.target.value);
+                                    //     
                                     //     setShowSuggestions(true)
                                     // }
                                     // else {
