@@ -21,7 +21,12 @@ const Header = () => {
 
     function goSearchPage(suggestion) {
         setMobileSearch(false)
-        navigate("/results?searchQuery=" + suggestion)
+        // navigate("/results?searchQuery=" + suggestion)
+        if (navigate) {
+            navigate("/results?searchQuery=" + encodeURIComponent(suggestion));
+        } else {
+            window.location.href = "/results?searchQuery=" + encodeURIComponent(suggestion);
+        }
     }
 
     async function getSuggestions() {
@@ -80,13 +85,16 @@ const Header = () => {
                             <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                         </svg>
                     </button>
-                    <form className={(mobileSearch) ? 'mb-0 w-100 search-mobile' : ' mb-0 w-100 search-mb'} id='searchForm' onSubmit={(e) => {
+                    {/* <form name='search' className={(mobileSearch) ? 'mb-0 w-100 search-mobile' : ' mb-0 w-100 search-mb'} id='searchForm' onSubmit={(e) => {
                         e.preventDefault();
                         goSearchPage(searchVal);
                     }
-                    } >
+                    } > */}
+                    <div className={(mobileSearch) ? 'mb-0 w-100 search-mobile' : ' mb-0 w-100 search-mb'} id='searchForm'>
+                         <input type="hidden" name="searchhidden"/>
                         <div className='w-full relative'  >
-                            <input type='search' required placeholder='Search'
+                            <input type='search' required placeholder='Searches'
+                            name='search'
                                 id="main-search"
                                 onChange={(e) => {
                                     if (e.target.value.trim()) {
@@ -98,6 +106,19 @@ const Header = () => {
                                         setShowSuggestions(false)
                                     }
                                 }}
+                                // onChange={(e) => {
+                                //     console.log("hi")
+                                //     const inputValue = e.target.value.trim();
+                                //     if (inputValue) {
+                                //         setSearchVal(inputValue);
+                                //         setShowSuggestions(true);
+                                //         // const updatedSuggestions = // your logic to filter suggestions based on inputValue
+                                //         // setSuggestions(updatedSuggestions);
+                                //     } else {
+                                //         setSearchVal('');
+                                //         setShowSuggestions(false);
+                                //     }
+                                // }}
                                 onFocus={(e) => {
                                     if (searchVal) {
                                         setShowSuggestions(true)
@@ -124,7 +145,7 @@ const Header = () => {
                                     ) : setShowSuggestions(false)}
                                 </ul>)}
                         </div>
-                        <button type="submit" className='py-2 md:px-4 px-3 bg-gray-100 rounded-r-full border  border-gray-300 border-l-transparent' id="submit_search">
+                        <button type="submit" className='py-2 md:px-4 px-3 bg-gray-100 rounded-r-full border  border-gray-300 border-l-transparent' id="submit_search" onClick={()=> goSearchPage(searchVal)}>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="sm:w-6 sm:h-6 h-5 w-5">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                             </svg>
@@ -134,7 +155,8 @@ const Header = () => {
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
                             </svg>
                         </button>
-                    </form>
+
+                    </div>
                 </div>
                 <div className='text-right flex sm:gap-4 gap-2 items-center'>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="sm:w-6 sm:h-6 w-5 h-5">
