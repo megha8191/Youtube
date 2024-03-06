@@ -85,13 +85,12 @@ const Header = () => {
                             <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                         </svg>
                     </button>
-                    {/* <form name='search' className={(mobileSearch) ? 'mb-0 w-100 search-mobile' : ' mb-0 w-100 search-mb'} id='searchForm' onSubmit={(e) => {
+                    <form name='search' className={(mobileSearch) ? 'mb-0 w-100 search-mobile' : ' mb-0 w-100 search-mb'} id='searchForm' onSubmit={(e) => {
                         e.preventDefault();
                         goSearchPage(searchVal);
                     }
-                    } > */}
-                    <div className={(mobileSearch) ? 'mb-0 w-100 search-mobile' : ' mb-0 w-100 search-mb'} id='searchForm'>
-                         <input type="hidden" name="searchhidden"/>
+                    } >
+                    {/* <div className={(mobileSearch) ? 'mb-0 w-100 search-mobile' : ' mb-0 w-100 search-mb'} id='searchForm'> */}
                         <div className='w-full relative'  >
                             <input type='search' required placeholder='Searches'
                             name='search'
@@ -99,7 +98,7 @@ const Header = () => {
                                 onChange={(e) => {
                                     const inputValue = e.target.value.trim();
                                         if (inputValue) {
-                                            setSearchVal(e.target.value);
+                                    setSearchVal(e.target.value);
                                         }
                                     // if (e.target.value.trim()) {
                                     //     
@@ -159,9 +158,8 @@ const Header = () => {
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
                             </svg>
                         </button>
-
+                        </form>
                     </div>
-                </div>
                 <div className='text-right flex sm:gap-4 gap-2 items-center'>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="sm:w-6 sm:h-6 w-5 h-5">
                         <path strokeLinecap="round" strokeLinejoin="round" d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z" />

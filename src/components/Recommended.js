@@ -8,9 +8,9 @@ const RelatableVideoCard =({video})=>{
     const { statistics, snippet, id } = video;
     const { thumbnails, title, channelTitle ,publishedAt} = snippet;
     return (
-    <Link to={"/watch?v="+ id} key={"relate"+ id} className=" xl-grid-cols-[160px,1fr] lg:grid-cols-[140px,1fr] sm:grid w-full gap-2 mt-4">
+    <Link to={"/watch?v="+ id} key={"relate"+ id} className=" xl-grid-cols-[160px,1fr] lg:grid-cols-[140px,1fr] grid sm:grid-cols-[200px,1fr] grid-cols-[1fr] w-full lg:gap-2 sm:gap-3 gap-3 sm:mt-4 mt-5">
         <div className="relative w-full">
-            <img className="w-full rounded-lg object-cover h-24 " src={thumbnails?.medium?.url || thumbnails?.maxres?.url} alt="thumbnail" />
+            <img className="w-full rounded-lg object-cover lg:h-24 h-30 " src={thumbnails?.medium?.url || thumbnails?.maxres?.url} alt="thumbnail" />
         </div>
         <div className="pb-1 pt-0">
             <h3 className="font-medium text-[15px] line-clamp-2">{title}</h3>

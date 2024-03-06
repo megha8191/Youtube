@@ -10,7 +10,7 @@ const appSlice = createSlice({
         toggleNav: (state)=>{
             state.isOpen = !state.isOpen
         },
-        hideSidebar:(state)=>{
+        hideSidebar:(state,action)=>{
             state.isOpen = false;
         },
         updateCat:(state,action)=>{
