@@ -5,9 +5,10 @@
       "headers": [
         {
           "key": "Access-Control-Allow-Origin",
-          "value": "*"
+          "value": "https://*.vercel.app"
         }
       ]
     }
   ]
 }
+
