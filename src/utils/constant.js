@@ -1,5 +1,5 @@
-export const google_api_key="AIzaSyAIi8VgLmgWhKlLLLRkRAGWCco6Nj2nY_I"
-// export const google_api_key= "AIzaSyCERZDyfPzmGEjhw2XtAYoTxzgYBw4zfy4"
+// export const google_api_key="AIzaSyAIi8VgLmgWhKlLLLRkRAGWCco6Nj2nY_I"
+export const google_api_key= "AIzaSyCERZDyfPzmGEjhw2XtAYoTxzgYBw4zfy4"
 
 
 export const youtube_api = "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=US&videoCategoryId=0&key="+google_api_key;
