@@ -22,7 +22,6 @@ const Header = () => {
 
     function goSearchPage(suggestion) {
         setMobileSearch(false)
-        // navigate("/results?searchQuery=" + suggestion)
         if (navigate) {
             navigate("/results?searchQuery=" + encodeURIComponent(suggestion));
         } else {
