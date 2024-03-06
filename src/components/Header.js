@@ -98,7 +98,7 @@ const Header = () => {
                     } >
                     {/* <div className={(mobileSearch) ? 'mb-0 w-100 search-mobile' : ' mb-0 w-100 search-mb'} id='searchForm'> */}
                         <div className='w-full relative'  >
-                            <input type='search' required placeholder='Searches'
+                            <input type='search' required placeholder='Search'
                             name='search'
                                 id="main-search"
                                 onChange={(e) => {
@@ -108,14 +108,8 @@ const Header = () => {
                                         }
                                         else {
                                         setSearchVal('');
+                                        setShowSuggestions(false)
                                     }
-                                    // if (e.target.value.trim()) {
-                                    //     
-                                    // }
-                                    // else {
-                                    //     setSearchVal('')
-                                    //     setShowSuggestions(false)
-                                    // }
                                 }}
                                 // onChange={(e) => {
                                 //     console.log("hi")
