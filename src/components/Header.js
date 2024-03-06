@@ -85,7 +85,8 @@ const Header = () => {
                             <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                         </svg>
                     </button>
-                    <form name='search' className={(mobileSearch) ? 'mb-0 w-100 search-mobile' : ' mb-0 w-100 search-mb'} id='searchForm' onSubmit={(e) => {
+                    <form name='search' 
+                    className={(mobileSearch) ? 'mb-0 w-100 search-mobile' : ' mb-0 w-100 search-mb'} id='searchForm' onSubmit={(e) => {
                         e.preventDefault();
                         goSearchPage(searchVal);
                     }
@@ -99,6 +100,7 @@ const Header = () => {
                                     const inputValue = e.target.value.trim();
                                         if (inputValue) {
                                             setSearchVal(e.target.value);
+                                            setShowSuggestions(true)
                                         }
                                         else {
                                         setSearchVal('');
