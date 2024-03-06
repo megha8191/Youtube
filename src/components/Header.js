@@ -97,6 +97,10 @@ const Header = () => {
                             name='search'
                                 id="main-search"
                                 onChange={(e) => {
+                                    const inputValue = e.target.value.trim();
+                                        if (inputValue) {
+                                            console.log('gi')
+                                        }
                                     // if (e.target.value.trim()) {
                                     //     setSearchVal(e.target.value);
                                     //     setShowSuggestions(true)
@@ -105,7 +109,6 @@ const Header = () => {
                                     //     setSearchVal('')
                                     //     setShowSuggestions(false)
                                     // }
-                                    console.log('hi')
                                 }}
                                 // onChange={(e) => {
                                 //     console.log("hi")
