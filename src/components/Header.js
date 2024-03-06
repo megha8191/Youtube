@@ -15,6 +15,7 @@ const Header = () => {
     const [searchVal, setSearchVal] = useState("");
     const [suggestions, setSuggestions] = useState();
     const [showSuggestions, setShowSuggestions] = useState(false);
+    // const []
 
     const storeCacheResult = useSelector(store => store.search);
     const searchInput = document.getElementById("main-search")
@@ -30,10 +31,15 @@ const Header = () => {
     }
 
     async function getSuggestions() {
+        try{
         const suggest = await fetch(search_autocomplete_api + searchVal);
         const json = await suggest.json();
         setSuggestions(json[1])
         dispatch(searchCache({ [searchVal]: json[1] }));
+        }
+        catch{
+            console.error("error fetching search suggestions api")
+        }
     }
 
     const isOpen = useSelector(store => store.app.isOpen)
@@ -100,7 +106,6 @@ const Header = () => {
                                     const inputValue = e.target.value.trim();
                                         if (inputValue) {
                                             setSearchVal(e.target.value);
-                                            setShowSuggestions(true)
                                         }
                                         else {
                                         setSearchVal('');
