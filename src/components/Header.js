@@ -98,13 +98,10 @@ const Header = () => {
                                 onChange={(e) => {
                                     const inputValue = e.target.value.trim();
                                         if (inputValue) {
-                                             setSearchVal(e.target.value);
-                                            setShowSuggestions(true)
-
+                                            setSearchVal(e.target.value);
                                         }
                                         else {
                                         setSearchVal('');
-                                        setShowSuggestions(false);
                                     }
                                     // if (e.target.value.trim()) {
                                     //     
