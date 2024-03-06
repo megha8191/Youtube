@@ -105,6 +105,7 @@ const Header = () => {
                                     const inputValue = e.target.value.trim();
                                         if (inputValue) {
                                             setSearchVal(e.target.value);
+                                            setShowSuggestions(true)
                                         }
                                         else {
                                         setSearchVal('');
