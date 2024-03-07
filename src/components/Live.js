@@ -11,7 +11,7 @@ const Live = () => {
     const data = await fetch("https://youtube.googleapis.com/youtube/v3/search?part=snippet&eventType=live&maxResults=25&q=news&type=video&key=" + google_api_key)
     const jsondata = await data.json();
     setLiveVideos(jsondata.items);
-    console.log(liveVideos)
+   
   }
   
   useEffect(() => {
@@ -30,7 +30,7 @@ const Live = () => {
       </ul>
        <div className='grid main-video-grid gap-x-4 gap-y-8 w-full'>
         {liveVideos.map(function (video) {
-          console.log(video)
+      
           return <LiveVideoCard item={video} key={video?.item?.id.videoId} />
         })}
       </div>
@@ -40,7 +40,7 @@ const Live = () => {
 
 
 const LiveVideoCard = (video) => {
-  console.log(video)
+ 
   const { snippet, id, contentDetails } = video?.item;
   const { thumbnails, title, channelTitle ,publishedAt,liveBroadcastContent} = snippet
   return (

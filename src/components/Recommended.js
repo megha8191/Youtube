@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import { timeAgo,formatViewCount } from '../utils/helper'
 
 const RelatableVideoCard =({video})=>{
-    console.log(video)
     const { statistics, snippet, id } = video;
     const { thumbnails, title, channelTitle ,publishedAt} = snippet;
     return (
@@ -36,8 +35,8 @@ const Recommended = ({related,notof}) => {
         const data = await fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics%2CliveStreamingDetails&chart=mostPopular&maxResults=50&regionCode=IN&videoCategoryId=" + related + "&key=" + google_api_key)
         const vdata = await data.json();
         setRecommendedList(vdata.items)
-        if(recommendedList)
-        console.log(recommendedList)
+        // if(recommendedList)
+        // console.log(recommendedList)
     }
 
     useEffect(()=>{
