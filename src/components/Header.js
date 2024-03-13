@@ -37,7 +37,7 @@ const Header = () => {
         dispatch(searchCache({ [searchVal]: json[1] }));
         }
         catch{
-            console.error("error fetching search suggestions api")
+            console.error("Error fetching search suggestions API")
         }
     }
 
