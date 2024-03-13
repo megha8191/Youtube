@@ -136,7 +136,7 @@ const Header = () => {
                             {showSuggestions && (
                                 <ul className='list-none absolute px-1 py-3 min-h-10 max-h-96 overflow-y-auto z-50 w-100 left-0 right-0 bg-white w-100 drop-shadow-lg rounded-lg border-black-200 border-1 border-t-0'
                                     onBlur={() => setShowSuggestions(false)}>
-                                    {(suggestions.length > 0) ? (
+                                    {(suggestions?.length > 0) ? (
                                         suggestions.map(function (suggestion) {
                                             return (<li className='hover:bg-gray-100 flex gap-3 px-4 py-1 cursor-pointer' key={"suggestion" + suggestion}
                                                 onMouseDown={(e) => {
